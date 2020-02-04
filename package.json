@@ -1,0 +1,44 @@
+{
+  "name": "nogizaka-dictionary",
+  "version": "1.0.0",
+  "description": "It's dictionary of nogizaka46, created by React with Typescript, Node.js, MongoDB.",
+  "main": "server.js",
+  "scripts": {
+    "tsc": "tsc",
+    "dev": "nodemon src/server.ts",
+    "start": "npm run build && node dist/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/5-hand/nogizaka-dictionary.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/5-hand/nogizaka-dictionary/issues"
+  },
+  "homepage": "https://github.com/5-hand/nogizaka-dictionary#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.7",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-validator": "^6.3.0",
+    "http-status-codes": "^1.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.3.5",
+    "mongoose": "^5.7.12",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "@types/cors": "^2.8.6",
+    "@types/express": "^4.17.2",
+    "@types/jsonwebtoken": "^8.3.7",
+    "@types/mongoose": "^5.7.0",
+    "@types/socket.io": "^2.1.4",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5"
+  }
+}
