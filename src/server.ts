@@ -12,7 +12,7 @@ mongoose.Promise = global.Promise;
 
 //mongoose'sのfindOneAndUpdateはmongoDBのfindOneAndUpdateより圧倒的に前に出来上がったものなので、
 //何も指定していないと勝手に最新のmongoDBの方を使うので、ここで使わないように設定する
-mongoose.connect("mongodb://localhost:27017/Dictionary", {
+mongoose.connect("mongodb://mongo:27017/Dictionary", {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,

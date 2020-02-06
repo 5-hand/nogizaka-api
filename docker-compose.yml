@@ -1,0 +1,19 @@
+version: "3"
+services:
+  web:
+    container_name: nogizaka-api
+    restart: always
+    image: nogizaka-api
+    ports:
+      - "3001:3001"
+    build: .
+    command: "npm run dev"
+    depends_on:
+      - "mongo"
+    links:
+      - "mongo"
+  mongo:
+    container_name: mongo
+    image: "mongo"
+    ports:
+      - "27017:27017"
