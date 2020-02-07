@@ -1,19 +1,33 @@
 version: "3"
 services:
-  web:
-    container_name: nogizaka-api
+  server:
+    container_name: nogizaka-server
     restart: always
-    image: nogizaka-api
+    image: nogizaka-server
     ports:
       - "3001:3001"
     build: .
-    command: "npm run dev"
     depends_on:
       - "mongo"
-    links:
-      - "mongo"
+    # version2以上はlinksと同じで
+    # version2ではcomposeファイルに書かれた全てのサービス間に自動的にリンクを張る仕様になったため、linksとわざわざ書く必要がなくなった
+    # コンテナが起動する順番は指定すれど、出来上がるまでは待ってくれない
+    volumes: 
+      - "./src:/app/src"
+      - "./dist:/app/dist"
+  client:
+    container_name: nogizaka-client
+    image: nogizaka-client
+    build: client/.
+    ports:
+      - "3000:3000"
+    volumes: 
+      - "./client:/app/client"
   mongo:
     container_name: mongo
     image: "mongo"
     ports:
       - "27017:27017"
+    volumes: 
+      - ./db:/data/db
+      - ./configdb:/data/configdb
