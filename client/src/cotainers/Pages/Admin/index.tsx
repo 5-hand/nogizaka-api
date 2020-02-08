@@ -1,9 +1,9 @@
 import { connect } from 'react-redux'
-import {State} from '../../../reducers/index'
 import Admin from '../../../components/Pages/Admin'
+import { State } from '../../../reducers'
 
 const mapStateToProps = (state: State) => ({
-    user: state.members
+    members: state.members
 })
 
 export default connect(mapStateToProps, {})(Admin)

@@ -1,11 +1,12 @@
-import { MembersState, membersState} from '../../reducers/membersReducer'
+import { MemberState as addMemberState } from '../../components/Organisms/Form/AdminForm'
+import { MemberState as updateMemberState } from '../../components/Organisms/Form/UpdateForm'
+import { membersState} from '../../reducers/membersReducer'
 import * as ActionType from './membersConstants'
-import { MemberState } from '../../components/Organisms/Form/UpdateForm'
 
-export const changeLoading = (isLoading: boolean) => ({
+export const changeLoading = (loading: boolean) => ({
     type: ActionType.MEMBERS_CHANGE_LOADING as typeof ActionType.MEMBERS_CHANGE_LOADING,
     payload: {
-        isLoading
+        loading
     }
 })
 
@@ -16,12 +17,12 @@ export const changePermission = (isPermission: boolean) => ({
     }
 })
 
-export const addMember = (member : MemberState) => ({
+export const addMember = (member : addMemberState) => ({
     type: ActionType.MEMBERS_MEMBER_ADD as typeof ActionType.MEMBERS_MEMBER_ADD,
     payload: {...member} 
 })
 
-export const updateMember = (member : MemberState) => ({
+export const updateMember = (member : updateMemberState) => ({
     type: ActionType.MEMBERS_MEMBER_UPDATE as typeof ActionType.MEMBERS_MEMBER_UPDATE,
     payload: {...member}
 })
@@ -37,16 +38,14 @@ export const getAllMembers = () => ({
 
 export const storageMembers = (members: membersState) => ({
     type: ActionType.MEMBERS_STORAGE_MEMBERS as typeof ActionType.MEMBERS_STORAGE_MEMBERS,
-    payload: {
-        members
-    }
+    payload: members
 })
 
 export type MembersAction = 
+    |ReturnType<typeof changeLoading>
+    |ReturnType<typeof changePermission>
     |ReturnType<typeof addMember>
     |ReturnType<typeof updateMember>
     |ReturnType<typeof deleteMember>
     |ReturnType<typeof getAllMembers>
     |ReturnType<typeof storageMembers>
-    |ReturnType<typeof changeLoading>
-    |ReturnType<typeof changePermission>

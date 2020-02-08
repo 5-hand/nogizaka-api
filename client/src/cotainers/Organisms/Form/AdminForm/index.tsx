@@ -1,11 +1,12 @@
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
 import AdminForm, {MemberState} from '../../../../components/Organisms/Form/AdminForm'
-import { MembersState } from '../../../../reducers/membersReducer'
 import * as Action from '../../../../actions/members/membersActions'
+import { State, StateValue } from '../../../../reducers'
+import { membersState as Members} from '../../../../reducers/membersReducer'
 
-const mapStateToProps = ({members}: {members: MembersState}) => ({
-    members: members.members
+const mapStateToProps = ({members}: {members: Members}) => ({
+    members: {...members}
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({

@@ -1,5 +1,7 @@
 import 
-    { put, call, takeLatest} 
+    { 
+        // all,  fork, 
+        put, call, takeLatest} 
 from 'redux-saga/effects'
 import * as Action from '../actions/members/membersConstants'
 import * as MembersAction from '../actions/members/membersActions'
@@ -21,7 +23,7 @@ function* addMember(action : ReturnType<typeof MembersAction.addMember>){
         const data = result.data
         if(data.error){
             alert(data.message)
-            yield put(MembersAction.changeLoading(false))
+            yield localStorage.removeItem('ticket')
         } else {
             yield put(MembersAction.storageMembers(data.members))
             alert(data.message)
@@ -47,7 +49,7 @@ function* updateMember(action : ReturnType<typeof MembersAction.updateMember>){
         const data = result.data
         if(data.error){
             alert(data.message)
-            yield put(MembersAction.changeLoading(false))
+            yield localStorage.removeItem('ticket')
         } else {
             yield alert(data.message)
             yield put(MembersAction.storageMembers(data.members))
@@ -73,7 +75,7 @@ function* deleteMember(action: ReturnType<typeof MembersAction.deleteMember>) {
         const data = result.data
         if(data.error){
             alert(data.message)
-            yield put(MembersAction.changeLoading(false))
+            yield localStorage.removeItem('ticket')
         } else {
             yield alert(data.message)
             yield put(MembersAction.storageMembers(data.members))
@@ -97,7 +99,7 @@ function* getAllMembers(){
         const data = result.data
         if(data.error){
             alert(data.message)
-            yield put(MembersAction.changeLoading(false))
+            yield localStorage.removeItem('ticket')
         } else {
             yield put(MembersAction.storageMembers(data.members))
         }

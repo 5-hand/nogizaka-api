@@ -1,7 +1,5 @@
 import axios, { Method } from 'axios'
-import { membersState } from '../reducers/membersReducer';
-import { MemberState } from '../components/Organisms/Form/AdminForm';
-
+import {MemberState} from '../components/Organisms/Form/AdminForm'
 
 interface optionConfig {
     [k : string] : string | object | undefined
@@ -10,7 +8,7 @@ interface optionConfig {
 interface apiOption {
     method: Method,
     url: string, 
-    data?: membersState | MemberState | {memberId: string},
+    data?: MemberState | {memberId: string},
 }
 
 const DEFAULT_API_CONFIG = {
@@ -19,9 +17,11 @@ const DEFAULT_API_CONFIG = {
 };
 
 export const MemberApiFactory = (optionConfig? : optionConfig) => {
+    const token = localStorage.getItem("ticket")
     const config = {
         ...DEFAULT_API_CONFIG,
         ...optionConfig,
+        headers: {Authorization: token}
     }
 
     const instance = axios.create(config);

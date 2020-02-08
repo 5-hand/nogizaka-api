@@ -3,7 +3,7 @@ import MembersReducer, { MembersState } from './membersReducer'
 
 
 export type StateValue = MembersState
-export interface State {
+export type State = {
     members: MembersState
 }
 

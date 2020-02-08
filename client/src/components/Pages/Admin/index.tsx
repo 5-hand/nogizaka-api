@@ -8,23 +8,25 @@ import useReactRouter from 'use-react-router'
 import { MembersState } from '../../../reducers/membersReducer'
 
 interface Props {
-    member : MembersState
+    members: MembersState
 }
 
 const Admin = (props: Props) => {
-    // const {history} = useReactRouter()
-    // useEffect(() => {
-    //     const isPermission = props.member.isPermission;
-    //     if(isPermission) {
-    //         history.push('/error')
-    //     }
-    // })
+    console.log(props.members)
+    const {history} = useReactRouter()
+    useEffect(() => {
+        const isStorageToken = localStorage.getItem('ticket') !== null
+        const isPermission = props.members.isPermission
+        if(isStorageToken !== true || isPermission !== true) {
+            history.push('/login')
+        }
+    })
 
     return(
         <>
             <Helmet>
                 <title>
-                    Nogizaka-API -AdminPage-
+                    Nogizaka-Dictinary ~AdminPage~
                 </title>
             </Helmet>
 
