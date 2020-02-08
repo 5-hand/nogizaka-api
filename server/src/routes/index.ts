@@ -1,18 +1,16 @@
 "use strict";
 
 import express from "express";
-import loginRoutes from "./loginRoutes";
-import userRoutes from "./userRoutes";
 import errorRoutes from "./errorRoutes";
 import memberRoutes from "./memberRoutes";
 import searchRoutes from "./searchRoutes";
-import loginController from "../controllers/loginController";
+import adminRoutes from './adminRoutes';
 
 const router = express.Router();
 
-router.use("/user", userRoutes);
 router.use("/member", memberRoutes);
 router.use("/search", searchRoutes);
+router.use("/admin", adminRoutes);
 router.use("/", errorRoutes);
 
 export default router;

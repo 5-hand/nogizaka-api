@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { Redirect, Route, Switch } from 'react-router'
 import { GlobalStyle } from '../style/BaseStyle'
 import Wrapper from './Atoms/Wrapper'
-import Login from './Pages/Login'
 import Admin from '../cotainers/Pages/Admin'
 import ClipLoader from 'react-spinners/ClipLoader'
 import { MembersState } from '../reducers/membersReducer';
@@ -48,7 +47,6 @@ const App: React.FC<Props> = props => {
       }
       
         <Switch>
-          <Route path='/login' component={Login} />
           <Route path="/admin" component={Admin} />
           <Redirect to="/login" />
         </Switch>

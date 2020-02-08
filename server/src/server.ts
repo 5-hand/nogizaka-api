@@ -1,7 +1,6 @@
 import express from "express";
 import indexRouter from "./routes/index";
 import cors from "cors";
-import path from "path";
 import mongoose from "mongoose";
 
 const app = express();
@@ -10,7 +9,7 @@ mongoose.Promise = global.Promise;
 
 //mongoose'sのfindOneAndUpdateはmongoDBのfindOneAndUpdateより圧倒的に前に出来上がったものなので、
 //何も指定していないと勝手に最新のmongoDBの方を使うので、ここで使わないように設定する
-mongoose.connect("mongodb://localhost:27017/NOGIZAKA-API", {
+mongoose.connect("mongodb://localhost:27017/Dictionary", {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
@@ -26,8 +25,6 @@ db.once("open", () => {
 app.set("port", process.env.PORT || 3001);
 
 app.use(cors());
-
-app.use(express.static(path.join(__dirname, "/client/build")));
 
 app.use(
   express.urlencoded({
