@@ -43,7 +43,7 @@ const baseButtonStyle = {
     bgColor: '#bf87c1' as '#bf87c1'
 }
 
-interface Props {
+type Props = {
     members: membersState
     getAllMembers: () => void
     update: (member: typeof initialState) => void

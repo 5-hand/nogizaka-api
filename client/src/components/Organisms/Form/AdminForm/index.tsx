@@ -42,6 +42,7 @@ const baseButtonStyle = {
 }
 
 const initialState = {
+    _id: '',
     image: '',
     name: ['', ''],
     sailium: ['', ''],

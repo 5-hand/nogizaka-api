@@ -3,13 +3,9 @@ import styled from 'styled-components'
 import { Redirect, Route, Switch } from 'react-router'
 import { GlobalStyle } from '../style/BaseStyle'
 import Wrapper from './Atoms/Wrapper'
-import Top from '../cotainers/Pages/Top'
-import Login from '../cotainers/Pages/Login'
 import Admin from '../cotainers/Pages/Admin'
-import Talk from '../cotainers/Pages/Talk'
-import Chat from '../cotainers/Pages/Chat'
 import ClipLoader from 'react-spinners/ClipLoader'
-import { userState } from '../reducers/userReducer';
+import { MembersState } from '../reducers/membersReducer';
 
 const LoadingWrapper = styled.div`
   position: fixed;
@@ -21,12 +17,6 @@ const LoadingWrapper = styled.div`
   background-color: rgba(255,255,255,0.5);
 `
 
-// const override = css`
-//     position: absolute;
-//     top: 50%;
-//     left: 50%;
-//     transform:translate(-50%, -50%);
-// `
 
 const wrapperStyle = {
   position: 'absolute',
@@ -39,7 +29,7 @@ const wrapperStyle = {
 } as const
 
 interface Props {
-  user: userState
+  members: MembersState
 }
 
 const App: React.FC<Props> = props => {
@@ -48,7 +38,7 @@ const App: React.FC<Props> = props => {
       <GlobalStyle />
       <Wrapper styled={{bgColor:'#F9F9F9',min_height:"100vh"}}>
       {
-        props.user.loading? 
+        props.members.isLoading? 
         <LoadingWrapper>
           <Wrapper styled={{...wrapperStyle}}>
             <ClipLoader size={200} color={"#9370db"} loading={true} />
@@ -58,12 +48,7 @@ const App: React.FC<Props> = props => {
       }
       
         <Switch>
-          <Route path='/login' component={Login} />
-          <Route path="/top" component={Top} />
           <Route path="/admin" component={Admin} />
-          <Route path="/talk" component={Talk} />
-          <Route path="/chat" component={Chat} />
-          <Redirect to="/login" />
         </Switch>
       </Wrapper>
     </>

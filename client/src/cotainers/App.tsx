@@ -1,9 +1,9 @@
 import { connect } from 'react-redux'
-import { userState } from '../reducers/userReducer'
+import { MembersState } from '../reducers/membersReducer'
 import App from '../components/App'
 
-const mapStateToProps = ({user} : {user:userState}) => ({
-    user
+const mapStateToProps = ({members} : {members: MembersState}) => ({
+    members
 })
 
 export default connect(mapStateToProps, {})(App)

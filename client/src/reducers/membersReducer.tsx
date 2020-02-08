@@ -16,11 +16,15 @@ export const initialState  = {
             height: '',
             hash:['']
         }
-    ]
+    ],
+    isLoading: false,
+    isPermission: true
 }
 
 export const defaultState = {
-    members: [] as membersState
+    members: [] as membersState,
+    isLoading: false,
+    isPermission: true
 }
 
 export type membersState = typeof initialState.members
@@ -33,6 +37,16 @@ const MembersReducer : Reducer<MembersState, MembersAction> = (state : MembersSt
             return {
                 ...state,
                 members: action.payload.members
+            }
+        case ActionType.MEMBERS_CHANGE_LOADING :
+            return {
+                ...state,
+                isLoading: action.payload.isLoading
+            }
+        case ActionType.MEMBERS_CHANGE_PERMISSION :
+            return {
+                ...state,
+                isPermission: action.payload.isPermission
             }
         default : 
             return state
