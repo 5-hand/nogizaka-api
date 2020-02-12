@@ -1,15 +1,18 @@
 import express from "express";
 import indexRouter from "./routes/index";
 import cors from "cors";
+import path from "path";
 import mongoose from "mongoose";
 
 const app = express();
 
 mongoose.Promise = global.Promise;
 
+const dbUrl = process.env.MONGODB_URI || 'mongodb://mongodb:27017/Dictionary'
+
 //mongoose'sのfindOneAndUpdateはmongoDBのfindOneAndUpdateより圧倒的に前に出来上がったものなので、
 //何も指定していないと勝手に最新のmongoDBの方を使うので、ここで使わないように設定する
-mongoose.connect("mongodb://heroku_5w6dw966:1tu492oa8jte6arkod1qpe6usc@ds137508.mlab.com:37508/heroku_5w6dw966", {
+mongoose.connect(dbUrl, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
@@ -33,9 +36,11 @@ app.use(
   })
 );
 
+app.use(express.static(path.join(__dirname, '../client/build')))
+
 app.use(express.json({ limit: "10mb" }));
 
-app.use("/", indexRouter);
+// app.use("/", indexRouter);
 
 app.listen(app.get("port"), () => {
     console.log(

@@ -1,0 +1,19 @@
+version: '3'
+services: 
+  web:
+    container_name: node
+    build: .
+    command: npm run dev
+    volumes:
+      - .:/app
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongodb
+  mongodb:
+    container_name: mongodb
+    image: mongo:4.0
+    volumes: 
+      - ./mongodb:/date/db
+    ports:
+      - 27017:27017

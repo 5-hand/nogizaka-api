@@ -9,9 +9,10 @@ var cors_1 = __importDefault(require("cors"));
 var mongoose_1 = __importDefault(require("mongoose"));
 var app = express_1.default();
 mongoose_1.default.Promise = global.Promise;
+var dbUrl = process.env.MONGODB_URI || 'mongodb://localhost/Dictionary';
 //mongoose'sのfindOneAndUpdateはmongoDBのfindOneAndUpdateより圧倒的に前に出来上がったものなので、
 //何も指定していないと勝手に最新のmongoDBの方を使うので、ここで使わないように設定する
-mongoose_1.default.connect("mongodb://heroku_1zn34p8m:memk4ujqh3f2ai8rlvnkif3ikg@ds037358.mlab.com:37358/heroku_1zn34p8m", {
+mongoose_1.default.connect(dbUrl, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
