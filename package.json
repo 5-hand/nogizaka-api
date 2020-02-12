@@ -6,7 +6,7 @@
   "scripts": {
     "tsc": "tsc",
     "dev": "nodemon src/server.ts",
-    "start": "tsc && node dist/server.js"
+    "start": "node dist/server.js"
   },
   "repository": {
     "type": "git",
